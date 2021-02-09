@@ -1,7 +1,7 @@
 /*
  * @Author: leafney
  * @Date: 2021-02-09 14:57:00
- * @LastEditTime: 2021-02-09 17:48:44
+ * @LastEditTime: 2021-02-09 19:27:51
  * @FilePath: /flutter_getx/lib/home.dart
  * @Description: 
  */
@@ -57,6 +57,52 @@ class HomePage extends StatelessWidget {
                 print('The received data is $data');
               },
               child: Text('Go to Page A and get received data'),
+            ),
+            Divider(),
+            RaisedButton(
+              onPressed: () {
+                // 通过别名路由跳转页面
+                // Get.toNamed('/a_page');
+
+                // 跳转并删除前一页面
+                // Get.offNamed('/a_page');
+
+                // 跳转并移除之前所有页面
+                Get.offAllNamed('/a_page');
+              },
+              child: Text('Go to Page A use toName()'),
+            ),
+            Divider(),
+            RaisedButton(
+              onPressed: () {
+                // 通过别名路由传参
+                Get.toNamed('/b_page', arguments: 'Get is the best');
+              },
+              child: Text('别名路由传参'),
+            ),
+            Divider(),
+            RaisedButton(
+              onPressed: () {
+                // 动态url方式传参
+                Get.toNamed('/b_page?device=phone&id=25');
+              },
+              child: Text('动态url传参'),
+            ),
+            Divider(),
+            RaisedButton(
+              onPressed: () {
+                // 通过别名路由参数传参
+                Get.toNamed('/b_page/wangwu');
+              },
+              child: Text('别名路由参数传参'),
+            ),
+            Divider(),
+            RaisedButton(
+              onPressed: () {
+                // 未定义路由
+                Get.toNamed('/xyz');
+              },
+              child: Text('未定义路由'),
             ),
           ],
         ),

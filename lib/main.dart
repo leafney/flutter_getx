@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/a_page.dart';
+import 'package:flutter_getx/b_page.dart';
 import 'package:flutter_getx/home.dart';
+import 'package:flutter_getx/unknow_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -18,6 +21,13 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),
+      getPages: [
+        GetPage(name: '/home', page: () => HomePage()),
+        GetPage(name: '/a_page', page: () => APage()),
+        GetPage(name: '/b_page', page: () => BPage()),
+        GetPage(name: '/b_page/:user', page: () => BPage()),
+      ],
+      unknownRoute: GetPage(name: '/notfound', page: () => UnknowPage()),
     );
   }
 }

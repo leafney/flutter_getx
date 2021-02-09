@@ -103,6 +103,137 @@ Get.to(NextScreen());
   Get.back(result: 'this is from home page');
 ```
 
-
 ----
 
+### 别名路由导航
+
+#### 配置别名
+
+```dart
+  return GetMaterialApp(
+    ...
+    ...
+    getPages: [
+      GetPage(name: '/home', page: () => HomePage()),
+      GetPage(name: '/a_page', page: () => APage()),
+      GetPage(name: '/b_page', page: () => BPage()),
+    ],
+  );
+```
+
+
+#### Get.toNamed
+
+使用别名跳转页面
+
+相当于 `Navigation.pushNamed()`
+
+```dart
+  // 通过别名路由跳转页面
+  Get.toNamed('/a_page');
+```
+
+#### Get.offNamed
+
+跳转并删除前一页面
+
+相当于 `Navigation.pushReplacementNamed()`
+
+```dart
+  // 跳转并删除前一页面
+  Get.offNamed('/a_page');
+```
+
+#### Get.offAllNamed
+
+跳转并删除之前所有的页面
+
+相当于 `Navigation.pushNamedAndRemoveUntil()`
+
+```dart
+  // 跳转并移除之前所有页面
+  Get.offAllNamed('/a_page');
+```
+
+#### 命名路由传参
+
+通过 `arguments` 属性传参，参数可以是 `字符串`、`Map`、`List`、`类实例`
+
+发送数据：
+
+```dart
+  // 通过别名路由传参
+  Get.toNamed('/b_page', arguments: 'Get is the best');
+```
+
+接收数据：
+
+```dart
+  Text('接收别名路由数据 ${Get.arguments}'),
+```
+
+#### 动态url传参
+
+通过动态url方式传参：
+
+```dart
+  // 动态url方式传参
+  Get.toNamed('/b_page?device=phone&id=25');
+```
+
+通过 `Get.parameters` 来接收参数：
+
+```dart
+  // 接收动态url方式的参数
+  Text(
+    "接收动态url参数 Device name is ${Get.parameters['device']} and id is ${Get.parameters['id']}",
+    style: TextStyle(color: Colors.red),
+  ),
+```
+
+#### 路由参数传参
+
+定义路由参数：
+
+```dart
+  getPages: [
+    GetPage(name: '/b_page', page: () => BPage()),
+    GetPage(name: '/b_page/:user', page: () => BPage()),
+  ],
+```
+
+发送路由参数：
+
+```dart
+  // 通过别名路由参数传参
+  Get.toNamed('/b_page/wangwu');
+```
+
+接收路由参数：
+
+```dart
+  // 接收别名路由参数
+  Text('接收别名路由参数 get url params ${Get.parameters['user']}'),
+```
+
+#### 未定义路由导航
+
+未定义路由导航，类似于404错误页面
+
+设置：
+
+```dart
+  return GetMaterialApp(
+    ...
+    unknownRoute: GetPage(name: '/notfound', page: () => UnknowPage()),
+  );
+```
+
+测试：
+
+```dart
+  // 未定义路由
+  Get.toNamed('/xyz');
+```
+
+-----

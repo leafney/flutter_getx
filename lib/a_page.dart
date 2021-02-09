@@ -1,7 +1,7 @@
 /*
  * @Author: leafney
  * @Date: 2021-02-09 16:10:40
- * @LastEditTime: 2021-02-09 18:05:42
+ * @LastEditTime: 2021-02-09 18:31:42
  * @FilePath: /flutter_getx/lib/a_page.dart
  * @Description: 
  */
@@ -13,9 +13,7 @@ class APage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Page A'),
-      ),
+      appBar: AppBar(title: Text('Page A')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
