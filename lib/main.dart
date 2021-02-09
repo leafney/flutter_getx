@@ -28,6 +28,11 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/b_page/:user', page: () => BPage()),
       ],
       unknownRoute: GetPage(name: '/notfound', page: () => UnknowPage()),
+      routingCallback: (routing) {
+        if (routing.current == '/a_page') {
+          print('${routing.current}');
+        }
+      },
     );
   }
 }

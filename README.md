@@ -65,17 +65,21 @@ Get.to(NextScreen());
 
 相当于 `Navigator.of(context).pushAndRemoveUntil`
 
+```dart
+  // 跳转到指定页面并取消之前的所有路由
+  // Get.offAll(APage());
+```
 
 #### 页面传值
 
-通过 `arguments` 参数传值。
+通过 `arguments` 参数传值，参数可以是 `字符串`、`Map`、`List`、或 `类的实例`
 
 ```dart
   // 传值
   Get.to(APage(), arguments: "Data from home");
 ```
 
-通过 `Get.arguments` 接收
+在另一页面中通过 `Get.arguments` 接收：
 
 ```dart
   Text(
@@ -86,7 +90,7 @@ Get.to(NextScreen());
 
 #### 接收页面返回值
 
-接收返回值：
+接收另一页面的返回值：
 
 ```dart
   onPressed: () async {
@@ -96,10 +100,10 @@ Get.to(NextScreen());
   },
 ```
 
-返回值：
+在另一页面中设置返回值：
 
 ```dart
-  // 返回页面并携带返回数据
+  // 返回前一页面并携带返回数据
   Get.back(result: 'this is from home page');
 ```
 
@@ -157,7 +161,7 @@ Get.to(NextScreen());
 
 #### 命名路由传参
 
-通过 `arguments` 属性传参，参数可以是 `字符串`、`Map`、`List`、`类实例`
+通过 `arguments` 属性传参，参数可以是 `字符串`、`Map`、`List`、或 `类的实例`
 
 发送数据：
 
@@ -166,7 +170,7 @@ Get.to(NextScreen());
   Get.toNamed('/b_page', arguments: 'Get is the best');
 ```
 
-接收数据：
+通过 `Get.arguments` 接收数据：
 
 ```dart
   Text('接收别名路由数据 ${Get.arguments}'),
@@ -209,7 +213,7 @@ Get.to(NextScreen());
   Get.toNamed('/b_page/wangwu');
 ```
 
-接收路由参数：
+通过 `Get.parameters` 接收路由参数：
 
 ```dart
   // 接收别名路由参数
@@ -237,3 +241,21 @@ Get.to(NextScreen());
 ```
 
 -----
+
+#### 中间件
+
+监听Get路由事件来触发动作，可以使用 `routingCallback` 实现：
+
+设置：
+
+```dart
+  return GetMaterialApp(
+    routingCallback: (routing) {
+      if (routing.current == '/a_page') {
+        print('${routing.current}');
+      }
+    },
+  );
+```
+
+----
