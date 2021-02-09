@@ -1,15 +1,15 @@
 # flutter_getx
 
-Flutter getx demo.
+Flutter getx 示例。
 
 [中文文档](README_zh.md)
 [English](README.md)
 
 
-## List
+## 列表
 
-| Branch | Introduction |
+| 分支 | 介绍 |
 | ------ | ------------ |
-| `00-base` | flutter project template |
+| `00-base` | flutter项目模板 |
 | `01-no_context` | `snackbar` `dialog` `bottomsheet` |
 | `02-` |   |
